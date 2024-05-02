@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CloudJava.iml" filepath="$PROJECT_DIR$/CloudJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codegrenerator.iml" filepath="$PROJECT_DIR$/codegrenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codejava-demo.iml" filepath="$PROJECT_DIR$/codejava-demo.iml" />
+    </modules>
+  </component>
+</project>
