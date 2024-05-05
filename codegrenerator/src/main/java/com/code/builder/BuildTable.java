@@ -1,6 +1,7 @@
 package com.code.builder;
 
 import com.code.bean.Constant;
+import com.code.bean.FieldInfo;
 import com.code.bean.TableInfo;
 import com.code.utils.PropertiesUtils;
 import com.code.utils.StringUtils;
@@ -19,6 +20,8 @@ public class BuildTable {
     private static final Logger logger = LoggerFactory.getLogger(BuildTable.class);
     private static Connection connc = null;
     private static String  SQL_SHOW_TABLE_STATUS ="show table status";
+    private static String  SQL_SHOW_FULL_FIELDS ="show full fields from %s";
+
     static {
         String dirverName = PropertiesUtils.getString("db.driver.name");
         String url= PropertiesUtils.getString("db.url");
@@ -34,6 +37,9 @@ public class BuildTable {
 
     }
 
+    /**
+     * 获取表结构信息
+     */
     public static void getTabels(){
         PreparedStatement ps =null;
         ResultSet tableResult =null;
@@ -60,6 +66,8 @@ public class BuildTable {
                 tableInfo.setComment(comment);
                 tableInfo.setBeanParamName(beanName+Constant.SUFFIX_BEAN_PARAM);
                   logger.info("表名称 :{}, 备注: {}, JavaBean: {}",tableInfo.getTableName(),tableInfo.getComment(),tableInfo.getBeanParamName());
+
+                 getreadFieldInfo(tableInfo);
             }
         } catch (Exception e) {
             logger.error("读取表失败",e);
@@ -88,6 +96,58 @@ public class BuildTable {
             }
         }
 
+    }
+    private static List<FieldInfo> getreadFieldInfo(TableInfo tableInfo){
+        PreparedStatement ps =null;
+        ResultSet fieldResult =null;
+        List<FieldInfo> fieldInfos = new ArrayList();
+
+        try {
+            ps = connc.prepareStatement(String.format(SQL_SHOW_FULL_FIELDS,tableInfo.getTableName()));
+            fieldResult=ps.executeQuery();
+            while (fieldResult.next())
+            {
+                String field = fieldResult.getString("field");
+                String type = fieldResult.getString("type");
+                String extra = fieldResult.getString("extra");
+                String comment = fieldResult.getString("comment");
+                if (type.indexOf("(")>0){
+                    type=type.substring(0,type.indexOf("("));
+                }
+                String propertyName=processFiled(field,false);
+                FieldInfo fieldInfo = new FieldInfo();
+                fieldInfos.add(fieldInfo);
+                fieldInfo.setFieldName(field);
+                fieldInfo.setComment(comment);
+                fieldInfo.setSqlType(type);
+                fieldInfo.setIsAadIncrement("auto_increment".equalsIgnoreCase(extra)?true:false);
+                fieldInfo.setPropertyName(propertyName);
+                fieldInfo.setJavaType(StringUtils.javaType(type));
+                // 打印验证数据正确性
+                logger.info("field:{},type:{},extra:{},comment:{},propertyName:{}",field,type,extra,comment,propertyName);
+                logger.info("=================================================");
+                logger.info("javatype:{}",fieldInfo.getJavaType());
+
+            }
+        } catch (Exception e) {
+            logger.error("读取表失败",e);
+        }finally {
+            if (fieldResult != null) {
+                try {
+                    fieldResult.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }if (ps !=null)
+            {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return fieldInfos;
     }
 
     public static String processFiled(String filed,Boolean upercaseFirstLetter){
