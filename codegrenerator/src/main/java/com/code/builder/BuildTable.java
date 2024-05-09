@@ -8,6 +8,7 @@ import com.code.utils.StringUtils;
 import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import javafx.scene.control.Tab;
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,7 +68,7 @@ public class BuildTable {
                 tableInfo.setBeanParamName(beanName+Constant.SUFFIX_BEAN_PARAM);
                   logger.info("表名称 :{}, 备注: {}, JavaBean: {}",tableInfo.getTableName(),tableInfo.getComment(),tableInfo.getBeanParamName());
 
-                 getreadFieldInfo(tableInfo);
+                 List<FieldInfo> fieldInfos=getreadFieldInfo(tableInfo);
             }
         } catch (Exception e) {
             logger.error("读取表失败",e);
@@ -128,6 +129,13 @@ public class BuildTable {
                 logger.info("=================================================");
                 logger.info("javatype:{}",fieldInfo.getJavaType());
 
+                if (ArrayUtils.contains(Constant.SLQ_DATE_TIME_TYPES,type)){
+                    tableInfo.setHaveDateTime(true);
+                }if (ArrayUtils.contains(Constant.SLQ_DATE_TYPES,type)){
+                    tableInfo.setHaveDate(true);
+            }if (ArrayUtils.contains(Constant.SLQ_DECIMAL_TYPE,type)){
+                    tableInfo.setHaveBigDecimal(true);
+            }
             }
         } catch (Exception e) {
             logger.error("读取表失败",e);
