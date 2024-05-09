@@ -8,7 +8,6 @@ import com.code.utils.PropertiesUtils;
  * @Descrition: 解析配置文件key 值
  */
 
-
 public class Constant {
     public static Boolean IGNORE_TABLE_PERFIX;
     public static String SUFFIX_BEAN_PARAM;

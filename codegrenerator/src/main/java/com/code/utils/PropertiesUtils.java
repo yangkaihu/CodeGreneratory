@@ -10,8 +10,14 @@ import java.util.concurrent.ConcurrentMap;
 
 public class PropertiesUtils {
 
+    /**
+     * @descripation:  create empty properties with no default values
+     */
      private static  Properties props= new Properties();
      // 把所有属性放在一个静态map 里
+    /**
+     * @describe: create empty list for storage proper
+     */
     private  static Map<String,String> PROPER_MAP = new ConcurrentHashMap() {};
     // 项目初始化的时候就去读取配置文件application.properties
     static {
