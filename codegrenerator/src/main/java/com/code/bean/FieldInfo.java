@@ -6,6 +6,7 @@ import lombok.Data;
 /**
  * @author yangkaihu@yeah.net
  * @date 2024/5/4 17:44
+ * @descipation:    表字段结构信息；show  full fields from %s;
  */
 
 

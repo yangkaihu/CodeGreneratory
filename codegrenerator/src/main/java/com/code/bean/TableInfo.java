@@ -11,6 +11,7 @@ import java.util.Map;
 /**
  * @author yangkaihu@yeah.net
  * @date 2024/5/4 17:44
+ * @description: 表结构：   show table  status;
  */
 @Data
 public class TableInfo {

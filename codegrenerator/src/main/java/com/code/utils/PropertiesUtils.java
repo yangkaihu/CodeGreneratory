@@ -8,6 +8,10 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * @description: 配置类读取
+ * @author: yangkaihu@yeah.net
+ */
 public class PropertiesUtils {
 
     /**

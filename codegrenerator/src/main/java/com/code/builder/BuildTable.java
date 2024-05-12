@@ -11,8 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BuildTable {
     // 引入lg4j日志
@@ -65,8 +64,7 @@ public class BuildTable {
                 tableInfo.setBeanParamName(beanName+Constant.SUFFIX_BEAN_PARAM);
                 getreadFieldInfo(tableInfo);
                 getkeyindexinfo(tableInfo);
-
-                logger.info("index:{}", JsonUtils.convertObj2Json(tableInfo));
+                tableInfoList.add(tableInfo);
             }
 
         } catch (Exception e) {
@@ -104,6 +102,11 @@ public class BuildTable {
         List<FieldInfo> fieldInfos = new ArrayList();
 
         try {
+            Map<String,FieldInfo> tempMap= new HashMap();
+            for (FieldInfo fieldInfo : tableInfo.getFieldList())
+            {
+                tempMap.put(fieldInfo.getFieldName(),fieldInfo);
+            }
             ps = connc.prepareStatement(String.format(SQL_SHOW_TABLE_INDEX,tableInfo.getTableName()));
             fieldResult=ps.executeQuery();
             while (fieldResult.next())
@@ -119,11 +122,7 @@ public class BuildTable {
                     keyFieldList=new ArrayList();
                     tableInfo.getKeyIndexMap().put(Key_name,keyFieldList);
                 }
-                for (FieldInfo fieldInfo : tableInfo.getFieldList()){
-                    if (fieldInfo.getFieldName().equals(Column_name)){
-                        keyFieldList.add(fieldInfo);
-                    }
-                }
+                keyFieldList.add(tempMap.get(Column_name));
             }
         } catch (Exception e) {
             logger.error("读取索引失败",e);
