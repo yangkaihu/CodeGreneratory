@@ -1,8 +1,7 @@
 package com.code.bean;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
-import sun.reflect.FieldInfo;
+
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.Map;
 /**
  * @author yangkaihu@yeah.net
  * @date 2024/5/4 17:44
+ * @description: 表结构：   show table  status;
  */
 @Data
 public class TableInfo {
@@ -35,7 +35,7 @@ public class TableInfo {
     /**
      * 字段信息
      */
-    private List<FieldInfo>fieldList;
+    private List<FieldInfo> fieldList;
     /**
      * 唯一索引集合
      */
@@ -52,4 +52,7 @@ public class TableInfo {
      * 是否有bigdecimal 类型
      */
     private Boolean haveBigDecimal;
+
+
+
 }
