@@ -42,7 +42,6 @@ public class BuildCode {
             bw.newLine();
             bw.write("}");
             bw.flush();
-            logger.info(" 创建po对象实例succeed!");
         } catch (Exception e) {
             logger.error("创建失败" + e);
         } finally {
@@ -53,12 +52,25 @@ public class BuildCode {
                     throw new RuntimeException(e);
                 }
             }
+            if (outw !=null){
+                try {
+                    outw.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (out!=null){
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 
     public static void main(String[] args) {
         File file = new File(Constant.PATH_PO);
-        System.out.println(file);
 
     }
 }
