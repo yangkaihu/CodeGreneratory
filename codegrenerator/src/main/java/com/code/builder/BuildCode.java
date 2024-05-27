@@ -33,15 +33,34 @@ public class BuildCode {
             bw = new BufferedWriter(outw);
             bw.write("package " + Constant.PACKAGE_PO + ";");
             bw.newLine();
-            bw.newLine();
+
             bw.write("import java.io.Serializable;");
             bw.newLine();
+            if (tableInfo.getHaveDate() || tableInfo.getHaveDateTime()) {
+                bw.write("import java.util.Date; ");
+            }
+            if (tableInfo.getHaveBigDecimal()){
+                bw.write("import java.math.BigDecimal;\n");
+            }
             bw.newLine();
+            bw.newLine();
+
+            BuildComments.createClassComment(bw,tableInfo.getComment());
             bw.write("public class " + tableInfo.getBeanName() + "  implements  " + " Serializable {");
+            for (FieldInfo fieldInfo : tableInfo.getFieldList()){
+               bw.newLine();
+               BuildComments.createFiledComment(bw,fieldInfo.getComment());
+               bw.write("private "+ fieldInfo.getJavaType()+" "+ fieldInfo.getPropertyName()+";");
+               bw.newLine();
+            }
+
+
+
             bw.newLine();
             bw.newLine();
             bw.write("}");
             bw.flush();
+            logger.info("生成类的实例:succeefull");
         } catch (Exception e) {
             logger.error("创建失败" + e);
         } finally {

@@ -153,6 +153,10 @@ public class BuildTable {
         try {
             ps = connc.prepareStatement(String.format(SQL_SHOW_FULL_FIELDS,tableInfo.getTableName()));
             fieldResult=ps.executeQuery();
+            Boolean haveDateTime = false;
+            Boolean haveDate = false;
+            Boolean HaveBigDecimal=false;
+
             while (fieldResult.next())
             {
                 String field = fieldResult.getString("field");
@@ -175,21 +179,18 @@ public class BuildTable {
 
 
                 if (ArrayUtils.contains(Constant.SLQ_DATE_TIME_TYPES,type)){
-                    tableInfo.setHaveDateTime(true);
-                }else {
-                    tableInfo.setHaveDateTime(false);
+                    haveDateTime =true;
                 }
                 if (ArrayUtils.contains(Constant.SLQ_DATE_TYPES,type)){
-                    tableInfo.setHaveDate(true);
-                }else {
-                    tableInfo.setHaveDate(false);
+                    haveDate =true;
                 }
                 if (ArrayUtils.contains(Constant.SLQ_DECIMAL_TYPE,type)){
-                    tableInfo.setHaveBigDecimal(true);
-                }else {
-                    tableInfo.setHaveBigDecimal(false);
+                    HaveBigDecimal =true;
                 }
             }
+            tableInfo.setHaveDateTime(haveDateTime);
+            tableInfo.setHaveDate(haveDate);
+            tableInfo.setHaveBigDecimal(HaveBigDecimal);
             tableInfo.setFieldList(fieldInfoList);
         } catch (Exception e) {
             logger.error("读取表失败",e);

@@ -26,7 +26,7 @@ public class StringUtils {
     }
     public static String javaType(String type){
         if (ArrayUtils.contains(Constant.SLQ_INTEGER_TYPE,type)){
-            return "integer";
+            return "Integer";
         }else if (ArrayUtils.contains(Constant.SLQ_LONG_TYPE,type)){
             return "Long";
         } else if (ArrayUtils.contains(Constant.SLQ_STRING_TYPE,type)) {

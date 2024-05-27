@@ -9,6 +9,7 @@ import com.code.utils.PropertiesUtils;
  */
 
 public class Constant {
+    public static String  AUTHOR_COMMENT;
     public static Boolean IGNORE_TABLE_PERFIX;
     public static String SUFFIX_BEAN_PARAM;
     public final static String[] SLQ_DATE_TIME_TYPES=new String[]{"datetime","timestamp"};
@@ -27,6 +28,7 @@ public class Constant {
     public static String PACKAGE_PO;
 
     static {
+        AUTHOR_COMMENT=PropertiesUtils.getString("author.comment");
         IGNORE_TABLE_PERFIX = Boolean.valueOf(PropertiesUtils.getString("ignore.table.prefix")) ;
         SUFFIX_BEAN_PARAM = PropertiesUtils.getString("suffix.bean.param");
         PATH_BASE=PropertiesUtils.getString("path.base");

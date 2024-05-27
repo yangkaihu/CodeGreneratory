@@ -2,6 +2,7 @@ package com.code.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
@@ -28,7 +29,7 @@ public class PropertiesUtils {
         InputStream is =null;
         try {
              is = PropertiesUtils.class.getClassLoader().getResourceAsStream("application.properties");
-             props.load(is);
+             props.load(new InputStreamReader(is,"utf8"));
             Iterator<Object> iterator1 = props.keySet().iterator();
             while (iterator1.hasNext()) {
                 String key =(String) iterator1.next();
