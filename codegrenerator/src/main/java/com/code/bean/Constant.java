@@ -31,19 +31,22 @@ public class Constant {
         AUTHOR_COMMENT=PropertiesUtils.getString("author.comment");
         IGNORE_TABLE_PERFIX = Boolean.valueOf(PropertiesUtils.getString("ignore.table.prefix")) ;
         SUFFIX_BEAN_PARAM = PropertiesUtils.getString("suffix.bean.param");
-        PATH_BASE=PropertiesUtils.getString("path.base");
-        PATH_BASE=PATH_BASE+PATH_JAVA+"/"+PropertiesUtils.getString("pachkage.base");
-        PATH_BASE=PATH_BASE.replace(".","/"); // PATH_BASE=/Documents/IdeaProjects/CloudJava/codejava-demo/src/main/java/com/codejava
-        PATH_PO=PATH_BASE+"/"+PropertiesUtils.getString("package.po").replace(".","/");
-        PACKACE_BASE=PropertiesUtils.getString("pachkage.base");
-        PACKAGE_PO= PACKACE_BASE+"."+PropertiesUtils.getString("package.po");
+        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");
+        //po
+        PACKAGE_PO = PACKACE_BASE +"."+PropertiesUtils.getString("package.po");
 
+        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");
+
+        PATH_BASE=PropertiesUtils.getString("path.base");
+        PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
+        PATH_BASE = PATH_BASE +PATH_JAVA;
+        PATH_PO = PATH_BASE+"/"+PACKAGE_PO.replace(".","/");
     }
 
     public static void main(String[] args) {
-        System.out.println(PATH_BASE);
-        System.out.println(PATH_PO);
+
         System.out.println(PACKAGE_PO);
+        System.out.println(PATH_PO);
 
     }
 

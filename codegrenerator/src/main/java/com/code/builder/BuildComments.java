@@ -28,7 +28,7 @@ public class BuildComments {
     public static  void  createFiledComment(BufferedWriter bw,String FiledComment) throws IOException{
        bw.write("\t /**");
        bw.newLine();
-       bw.write("\t *"+FiledComment== null ?  " " : FiledComment);
+       bw.write("\t * "+FiledComment== null ?  " " : FiledComment);
        bw.newLine();
        bw.write("\t */");
        bw.newLine();
