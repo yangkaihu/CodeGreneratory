@@ -3,6 +3,8 @@ package com.code.bean;
 
 import lombok.Data;
 
+
+
 /**
  * @author yangkaihu@yeah.net
  * @date 2024/5/4 17:44
@@ -11,7 +13,9 @@ import lombok.Data;
 
 
 @Data
-public class FieldInfo {
+public class FieldInfo  {
+
+
     /**
      * 字段名
      */

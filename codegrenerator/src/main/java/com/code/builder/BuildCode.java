@@ -3,6 +3,8 @@ package com.code.builder;
 import com.code.bean.Constant;
 import com.code.bean.FieldInfo;
 import com.code.bean.TableInfo;
+import com.code.utils.DateUtil;
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +40,10 @@ public class BuildCode {
             bw.newLine();
             if (tableInfo.getHaveDate() || tableInfo.getHaveDateTime()) {
                 bw.write("import java.util.Date; ");
+                bw.newLine();
+                bw.write(Constant.BEAN_DATA_FORMAT_CLASS+";");
+                bw.newLine();
+                bw.write(Constant.BEAN_DATA_UNFORMAT_CLASS+";");
             }
             if (tableInfo.getHaveBigDecimal()){
                 bw.write("import java.math.BigDecimal;\n");
@@ -50,12 +56,20 @@ public class BuildCode {
             for (FieldInfo fieldInfo : tableInfo.getFieldList()){
                bw.newLine();
                BuildComments.createFiledComment(bw,fieldInfo.getComment());
-               bw.write("private "+ fieldInfo.getJavaType()+" "+ fieldInfo.getPropertyName()+";");
+               if (ArrayUtils.contains(Constant.SLQ_DATE_TIME_TYPES,fieldInfo.getSqlType())){
+                   bw.write("\t"+String.format(Constant.BEAN_DATA_FORMAT_EXPRESSION, DateUtil.YYYY_MM_DD_HH_MM_SS));
+                   bw.newLine();
+                   bw.write("\t"+String.format(Constant.BEAN_DATA_UNFORMAT_EXPRESSION,DateUtil.YYYY_MM_DD_HH_MM_SS));
+               }
+               if (ArrayUtils.contains(Constant.SLQ_DATE_TYPES,fieldInfo.getSqlType())){
+                   bw.write("\t"+String.format(Constant.BEAN_DATA_FORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
+                   bw.newLine();
+                   bw.write("\t"+String.format(Constant.BEAN_DATA_UNFORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
+               }
+               bw.newLine();
+               bw.write("\t"+"private "+ fieldInfo.getJavaType()+" "+ fieldInfo.getPropertyName()+";");
                bw.newLine();
             }
-
-
-
             bw.newLine();
             bw.newLine();
             bw.write("}");

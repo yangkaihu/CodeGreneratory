@@ -2,7 +2,6 @@ package com.code.builder;
 
 import com.code.bean.Constant;
 import com.code.utils.DateUtil;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -28,7 +27,7 @@ public class BuildComments {
     public static  void  createFiledComment(BufferedWriter bw,String FiledComment) throws IOException{
        bw.write("\t /**");
        bw.newLine();
-       bw.write("\t * "+FiledComment== null ?  " " : FiledComment);
+       bw.write("\t * "+(FiledComment== null ?  " " : FiledComment));
        bw.newLine();
        bw.write("\t */");
        bw.newLine();

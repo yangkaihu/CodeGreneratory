@@ -33,7 +33,9 @@ public class StringUtils {
             return "String";
         } else if (ArrayUtils.contains(Constant.SLQ_DATE_TIME_TYPES,type)) {
             return "Date";
-        } else if (ArrayUtils.contains(Constant.SLQ_DECIMAL_TYPE,type)) {
+        } else if (ArrayUtils.contains(Constant.SLQ_DATE_TYPES,type)){
+            return "Date";
+        }else if (ArrayUtils.contains(Constant.SLQ_DECIMAL_TYPE,type)) {
             return "BigDecimal";
         }else {
             throw new RuntimeException("无法识别的类型:"+ type);

@@ -3,6 +3,7 @@ package com.code.bean;
 import lombok.Data;
 
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,8 @@ import java.util.Map;
  * @description: 表结构：   show table  status;
  */
 @Data
-public class TableInfo {
+public class TableInfo  {
+
     /**
      * 表名称
      */

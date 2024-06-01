@@ -9,6 +9,7 @@ import java.util.Date;
  * @date 2024/5/26 5:46
  */
 public class DateUtil {
+    public static  final String YYYY_MM_DD_HH_MM_SS= "yyyy-MM-dd HH:mm:ss";
     public static  final String YYYY_MM_DD = "yyyy-MM-dd";
     public static  final String _YYYYMMDD = "yyyy/MM/dd";
     public static  String DateFormat(Date date,String patten){
