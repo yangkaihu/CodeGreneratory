@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @Author: 杨开虎
@@ -21,7 +22,7 @@ public class UserInfo implements Serializable {
     /**
      * 用户ID
      */
-
+    @JsonIgnore
     private String userId;
 
     /**
@@ -71,7 +72,7 @@ public class UserInfo implements Serializable {
     /**
      * 状态
      */
-
+    @JsonIgnore
     private Integer status;
 
     /**

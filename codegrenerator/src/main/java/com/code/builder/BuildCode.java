@@ -47,10 +47,20 @@ public class BuildCode {
             }
             if (tableInfo.getHaveBigDecimal()){
                 bw.write("import java.math.BigDecimal;\n");
+
             }
             bw.newLine();
-            bw.newLine();
-
+              Boolean haveIgnoreBean = false;
+              for (FieldInfo field : tableInfo.getFieldList()){
+                  if (ArrayUtils.contains(Constant.IGNORE_BEAN_TOJSON_FILED.split(","),field.getPropertyName())){
+                      haveIgnoreBean=true;
+                      break;
+                  }
+              }
+              if (haveIgnoreBean){
+                  bw.write(Constant.IGNORE_BEAN_CLASS+";");
+                  bw.newLine();
+              }
             BuildComments.createClassComment(bw,tableInfo.getComment());
             bw.write("public class " + tableInfo.getBeanName() + "  implements  " + " Serializable {");
             for (FieldInfo fieldInfo : tableInfo.getFieldList()){
@@ -65,6 +75,9 @@ public class BuildCode {
                    bw.write("\t"+String.format(Constant.BEAN_DATA_FORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
                    bw.newLine();
                    bw.write("\t"+String.format(Constant.BEAN_DATA_UNFORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
+               }
+               if (ArrayUtils.contains(Constant.IGNORE_BEAN_TOJSON_FILED.split(","),fieldInfo.getPropertyName())){
+                   bw.write("\t"+ String.format(Constant.IGNORE_BEAN_TOJSON_EXPRESSION));
                }
                bw.newLine();
                bw.write("\t"+"private "+ fieldInfo.getJavaType()+" "+ fieldInfo.getPropertyName()+";");
