@@ -8,6 +8,8 @@ import com.code.utils.PropertiesUtils;
  * @Descrition: 解析配置文件key 值
  */
 public class Constant {
+    public static String BEAN_LOMBOK_EXPRESSION;
+    public static String BEAN_LOOMBOK_CLASS;
     // 需要忽略的的属性
     public static String IGNORE_BEAN_TOJSON_FILED;
     public static String IGNORE_BEAN_TOJSON_EXPRESSION;
@@ -34,6 +36,9 @@ public class Constant {
     public static String PACKAGE_PO;
 
     static {
+        // 导入lombok 插件
+        BEAN_LOMBOK_EXPRESSION =PropertiesUtils.getString("bean.lombok.expression");
+        BEAN_LOOMBOK_CLASS=PropertiesUtils.getString("bean.lombok.class");
         // 需要忽略的的属性
         IGNORE_BEAN_TOJSON_FILED = PropertiesUtils.getString("ignore.bean.tojson.filed");
         IGNORE_BEAN_TOJSON_EXPRESSION = PropertiesUtils.getString("ignore.bean.tojson.expression");

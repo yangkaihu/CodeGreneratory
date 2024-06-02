@@ -61,7 +61,11 @@ public class BuildCode {
                   bw.write(Constant.IGNORE_BEAN_CLASS+";");
                   bw.newLine();
               }
+              bw.write(Constant.BEAN_LOOMBOK_CLASS+";");
+              bw.newLine();
             BuildComments.createClassComment(bw,tableInfo.getComment());
+            bw.write("@Data");
+            bw.newLine();
             bw.write("public class " + tableInfo.getBeanName() + "  implements  " + " Serializable {");
             for (FieldInfo fieldInfo : tableInfo.getFieldList()){
                bw.newLine();
