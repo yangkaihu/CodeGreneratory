@@ -78,7 +78,7 @@ public class BuildCode {
                if (ArrayUtils.contains(Constant.SLQ_DATE_TYPES,fieldInfo.getSqlType())){
                    bw.write("\t"+String.format(Constant.BEAN_DATA_FORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
                    bw.newLine();
-                   bw.write("\t"+String.format(Constant.BEAN_DATA_UNFORMAT_EXPRESSION,DateUtil.YYYY_MM_DD));
+                   bw.write("\t"+String.format(Constant.BEAN_DATA_UNFORMAT_EXPRESSION, DateUtil.YYYY_MM_DD));
                }
                if (ArrayUtils.contains(Constant.IGNORE_BEAN_TOJSON_FILED.split(","),fieldInfo.getPropertyName())){
                    bw.write("\t"+ String.format(Constant.IGNORE_BEAN_TOJSON_EXPRESSION));
