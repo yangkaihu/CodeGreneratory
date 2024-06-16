@@ -1,3 +1,12 @@
-D:\Documents\IdeaProjects\CloudJava\codegrenerator\src\main\java\com\code\utils\PropertiesUtils.java
-D:\Documents\IdeaProjects\CloudJava\codegrenerator\src\main\java\com\code\builder\BuildTable.java
-D:\Documents\IdeaProjects\CloudJava\codegrenerator\src\main\java\com\code\CodeGreneratorApplication.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\bean\TableInfo.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\builder\BuildCode.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\bean\FieldInfo.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\utils\PropertiesUtils.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\builder\BuildTable.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\CodeGreneratorApplication.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\utils\JsonUtils.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\bean\Constant.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\builder\BuildComments.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\test\TestYangkaihu.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\utils\DateUtil.java
+D:\Documents\IdeaProjects\CodeGreneratory\codegrenerator\src\main\java\com\code\utils\StringUtils.java

@@ -3,10 +3,8 @@ package com.code.builder;
 import com.code.bean.Constant;
 import com.code.bean.FieldInfo;
 import com.code.bean.TableInfo;
-import com.code.utils.JsonUtils;
 import com.code.utils.PropertiesUtils;
 import com.code.utils.StringUtils;
-import com.sun.deploy.security.ValidationState;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +56,7 @@ public class BuildTable {
                 {
                     beanName = tableName.substring(beanName.indexOf("_")+1);
                 }
-                 beanName =processFiled(beanName,true);
+                beanName =processFiled(beanName,true);
                 tableInfo.setTableName(tableName);
                 tableInfo.setBeanName(beanName);
                 tableInfo.setComment(comment);

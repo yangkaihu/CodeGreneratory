@@ -9,12 +9,10 @@ import java.util.HashMap;
  * @author yangkaihu@yeah.net
  * @date 2024/5/12 6:42
  */
-public class TestYangkaihu {
+public class TestYangkaihu  extends  Thread{
 
-    @Test
-    public void test01(){
-        HashMap hashMap = new HashMap(23);
-        //initial capacity
 
+    public TestYangkaihu() {
+        System.out.println("调用线程Thread");
     }
 }

@@ -1,0 +1,13 @@
+com\code\CodeGreneratorApplication.class
+com\code\utils\JsonUtils.class
+com\code\bean\Constant.class
+com\code\builder\BuildTable.class
+com\code\bean\FieldInfo.class
+com\code\test\TestYangkaihu.class
+com\code\utils\PropertiesUtils.class
+com\code\utils\DateUtil.class
+com\code\utils\StringUtils.class
+com\code\utils\PropertiesUtils$1.class
+com\code\builder\BuildComments.class
+com\code\bean\TableInfo.class
+com\code\builder\BuildCode.class
