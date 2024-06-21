@@ -5,16 +5,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 /**
 *@Author: 杨开虎
 *@Description: 用户者信息
-*@Date: 2024/06/02
+*@Date: 2024/06/21
 */
 @Data
 public class UserInfo  implements   Serializable {
-	private static final long serialVersionUID = 3693764398146764192L;
-	/**
+	 /**
 	 * Id
 	 */
 
@@ -87,4 +85,6 @@ public class UserInfo  implements   Serializable {
 	 */
 
 	private Long totalSpace;
+
+
 }

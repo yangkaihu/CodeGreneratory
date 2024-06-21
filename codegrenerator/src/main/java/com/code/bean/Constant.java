@@ -2,12 +2,15 @@ package com.code.bean;
 
 import com.code.utils.PropertiesUtils;
 
+import java.util.Properties;
+
 /**
  * @author yangkaihu@yeah.net
  * @date 2024/5/4 17:54
  * @Descrition: 解析配置文件key 值
  */
 public class Constant {
+
     public static String BEAN_LOMBOK_EXPRESSION;
     public static String BEAN_LOOMBOK_CLASS;
     // 需要忽略的的属性
@@ -34,6 +37,8 @@ public class Constant {
     public static String PATH_PO;
     public static String PACKACE_BASE;
     public static String PACKAGE_PO;
+    public static String PACKAGE_UTILS;
+    public  static  String PACKAGE_UTILS_PATH;
 
     static {
         // 导入lombok 插件
@@ -56,18 +61,28 @@ public class Constant {
 
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
 
-        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");
+        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");//com.codejava.utils/
 
+        PACKAGE_UTILS = PropertiesUtils.getString("package.utils");
+        PACKAGE_UTILS_PATH = PACKACE_BASE+"."+ PACKAGE_UTILS;
         PATH_BASE = PropertiesUtils.getString("path.base");
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
         PATH_BASE = PATH_BASE + PATH_JAVA;
         PATH_PO = PATH_BASE + "/" + PACKAGE_PO.replace(".", "/");
+
+        PACKAGE_UTILS = PATH_BASE + "/"+PACKACE_BASE.replace(".","/")+"/" + PACKAGE_UTILS.replace(".","/");
+
+
     }
 
     public static void main(String[] args) {
 
-        System.out.println(PACKAGE_PO);
         System.out.println(PATH_PO);
+
+        System.out.println(PACKAGE_UTILS);
+
+        System.out.println(PACKAGE_UTILS_PATH);
+
 
     }
 

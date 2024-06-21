@@ -1,5 +1,6 @@
-package com.code.utils;
+package com.codejava.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.Map;
  * @author yangkaihu@yeah.net
  * @date 2024/6/16 16:51
  */
-public class DataUtil {
+public class DateUtil {
     private static final Object lockObj = new Object();
     private static Map<String, ThreadLocal<SimpleDateFormat>> sdfMap = new HashMap<String, ThreadLocal<SimpleDateFormat>>();
 
@@ -36,7 +37,14 @@ public class DataUtil {
         return getSdf(pattern).format(date);
     }
 
-
+    public static Date parse(String dateStr,String pattern){
+        try {
+            return getSdf(pattern).parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }
