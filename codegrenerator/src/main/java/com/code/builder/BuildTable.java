@@ -60,7 +60,7 @@ public class BuildTable {
                 tableInfo.setTableName(tableName);
                 tableInfo.setBeanName(beanName);
                 tableInfo.setComment(comment);
-                tableInfo.setBeanParamName(beanName+Constant.SUFFIX_BEAN_PARAM);
+                tableInfo.setBeanParamName(beanName+Constant.SUFFIX_BEAN_QUERY);
                 getreadFieldInfo(tableInfo);
                 getkeyindexinfo(tableInfo);
                 tableInfoList.add(tableInfo);

@@ -24,7 +24,7 @@ public class Constant {
     public static String BEAN_DATA_UNFORMAT_CLASS;
     public static String AUTHOR_COMMENT;
     public static Boolean IGNORE_TABLE_PERFIX;
-    public static String SUFFIX_BEAN_PARAM;
+    public static String SUFFIX_BEAN_QUERY;
     public final static String[] SLQ_DATE_TIME_TYPES = new String[]{"datetime", "timestamp"};
     public final static String[] SLQ_DATE_TYPES = new String[]{"date"};
     public final static String[] SLQ_DECIMAL_TYPE = new String[]{"decimal", "double", "float"};
@@ -36,16 +36,22 @@ public class Constant {
     public static String PATH_BASE;
     public static String PATH_PO;
     public static String PACKACE_BASE;
+    public static String PACKACE_QUERY;
+    public static String PATH_QUERY;
     public static String PACKAGE_PO;
-    public  static String PACKACE_ENUM;
+    public static String PACKACE_ENUM;
     public static String PACKACE_ENUM_PATH;
     public static String PACKAGE_UTILS;
-    public  static  String PACKAGE_UTILS_PATH;
+    public static String PACKAGE_UTILS_PATH;
+
+    public static String SUFFIX_BEAN_QUERY_FUZZY;
+    public static String SUFFIX_BEAN_QUERY_TIME_START;
+    public static String SUFFIX_BEAN_QUERY_TIME_END;
 
     static {
         // 导入lombok 插件
-        BEAN_LOMBOK_EXPRESSION =PropertiesUtils.getString("bean.lombok.expression");
-        BEAN_LOOMBOK_CLASS=PropertiesUtils.getString("bean.lombok.class");
+        BEAN_LOMBOK_EXPRESSION = PropertiesUtils.getString("bean.lombok.expression");
+        BEAN_LOOMBOK_CLASS = PropertiesUtils.getString("bean.lombok.class");
         // 需要忽略的的属性
         IGNORE_BEAN_TOJSON_FILED = PropertiesUtils.getString("ignore.bean.tojson.filed");
         IGNORE_BEAN_TOJSON_EXPRESSION = PropertiesUtils.getString("ignore.bean.tojson.expression");
@@ -54,11 +60,16 @@ public class Constant {
         BEAN_DATA_FORMAT_EXPRESSION = PropertiesUtils.getString("bean.data.format_expression");
         BEAN_DATA_FORMAT_CLASS = PropertiesUtils.getString("bean.data.format.class");
         BEAN_DATA_UNFORMAT_EXPRESSION = PropertiesUtils.getString("bean.data.unformat.expression");
-        BEAN_DATA_UNFORMAT_CLASS= PropertiesUtils.getString("bean.data.unformat.class");
+        BEAN_DATA_UNFORMAT_CLASS = PropertiesUtils.getString("bean.data.unformat.class");
 
         AUTHOR_COMMENT = PropertiesUtils.getString("author.comment");
         IGNORE_TABLE_PERFIX = Boolean.valueOf(PropertiesUtils.getString("ignore.table.prefix"));
-        SUFFIX_BEAN_PARAM = PropertiesUtils.getString("suffix.bean.param");
+        SUFFIX_BEAN_QUERY = PropertiesUtils.getString("suffix.bean.query");
+
+         SUFFIX_BEAN_QUERY_FUZZY =PropertiesUtils.getString("suffix.bean.query.fuzzy");
+         SUFFIX_BEAN_QUERY_TIME_START=PropertiesUtils.getString("suffix.bean.query.time.start");
+         SUFFIX_BEAN_QUERY_TIME_END=PropertiesUtils.getString("suffix.bean.query.time.end");
+
         PACKACE_BASE = PropertiesUtils.getString("pachkage.base");
 
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
@@ -67,22 +78,26 @@ public class Constant {
 
         PACKAGE_UTILS = PropertiesUtils.getString("package.utils");
         PACKACE_ENUM = PropertiesUtils.getString("package.enum");// 枚举类
-        PACKAGE_UTILS_PATH = PACKACE_BASE+"."+ PACKAGE_UTILS;
-        PACKACE_ENUM_PATH= PACKACE_BASE+"."+PACKACE_ENUM;
+        PACKAGE_UTILS_PATH = PACKACE_BASE + "." + PACKAGE_UTILS;
+        PACKACE_ENUM_PATH = PACKACE_BASE + "." + PACKACE_ENUM;
         PATH_BASE = PropertiesUtils.getString("path.base");
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
         PATH_BASE = PATH_BASE + PATH_JAVA;
         PATH_PO = PATH_BASE + "/" + PACKAGE_PO.replace(".", "/");
 
-        PACKAGE_UTILS = PATH_BASE + "/"+PACKACE_BASE.replace(".","/")+"/" + PACKAGE_UTILS.replace(".","/");
-        PACKACE_ENUM=  PATH_BASE+"/"+PACKACE_BASE.replace(".","/")+"/"+PACKACE_ENUM.replace(".","/");
 
+        PACKACE_QUERY = PropertiesUtils.getString("package.query");
+        PACKAGE_UTILS = PATH_BASE + "/" + PACKACE_BASE.replace(".", "/") + "/" + PACKAGE_UTILS.replace(".", "/");
+        PACKACE_ENUM = PATH_BASE + "/" + PACKACE_BASE.replace(".", "/") + "/" + PACKACE_ENUM.replace(".", "/");
+        PATH_QUERY = PATH_BASE + "/" + PACKACE_BASE.replace(".", "/") + "/" + PACKACE_QUERY.replace(".", "/");
+        PACKACE_QUERY = PACKACE_BASE + "." + PACKACE_QUERY;
     }
 
     public static void main(String[] args) {
-
-        System.out.println(PACKACE_ENUM);
-        System.out.println(PACKACE_ENUM_PATH);
+        System.out.println(PACKACE_BASE);
+        System.out.println(PATH_BASE);
+        System.out.println(PATH_QUERY);
+        System.out.println(PACKACE_QUERY);
 
     }
 

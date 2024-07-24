@@ -67,6 +67,7 @@ public class BuildCode {
             bw.write("@Data");
             bw.newLine();
             bw.write("public class " + tableInfo.getBeanName() + "  implements  " + " Serializable {");
+            bw.newLine();
             for (FieldInfo fieldInfo : tableInfo.getFieldList()){
                bw.newLine();
                BuildComments.createFiledComment(bw,fieldInfo.getComment());
