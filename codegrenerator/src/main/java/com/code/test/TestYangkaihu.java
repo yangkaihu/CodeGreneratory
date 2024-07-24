@@ -11,7 +11,6 @@ import java.util.HashMap;
  */
 public class TestYangkaihu  extends  Thread{
 
-
     public TestYangkaihu() {
         System.out.println("调用线程Thread");
     }

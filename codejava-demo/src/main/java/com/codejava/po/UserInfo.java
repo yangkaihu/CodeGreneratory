@@ -8,7 +8,7 @@ import lombok.Data;
 /**
 *@Author: 杨开虎
 *@Description: 用户者信息
-*@Date: 2024/06/21
+*@Date: 2024/07/21
 */
 @Data
 public class UserInfo  implements   Serializable {

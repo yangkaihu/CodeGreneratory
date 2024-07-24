@@ -37,6 +37,8 @@ public class Constant {
     public static String PATH_PO;
     public static String PACKACE_BASE;
     public static String PACKAGE_PO;
+    public  static String PACKACE_ENUM;
+    public static String PACKACE_ENUM_PATH;
     public static String PACKAGE_UTILS;
     public  static  String PACKAGE_UTILS_PATH;
 
@@ -61,28 +63,26 @@ public class Constant {
 
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
 
-        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");//com.codejava.utils/
+        PACKACE_BASE = PropertiesUtils.getString("pachkage.base");//com.codejava
 
         PACKAGE_UTILS = PropertiesUtils.getString("package.utils");
+        PACKACE_ENUM = PropertiesUtils.getString("package.enum");// 枚举类
         PACKAGE_UTILS_PATH = PACKACE_BASE+"."+ PACKAGE_UTILS;
+        PACKACE_ENUM_PATH= PACKACE_BASE+"."+PACKACE_ENUM;
         PATH_BASE = PropertiesUtils.getString("path.base");
         PACKAGE_PO = PACKACE_BASE + "." + PropertiesUtils.getString("package.po");
         PATH_BASE = PATH_BASE + PATH_JAVA;
         PATH_PO = PATH_BASE + "/" + PACKAGE_PO.replace(".", "/");
 
         PACKAGE_UTILS = PATH_BASE + "/"+PACKACE_BASE.replace(".","/")+"/" + PACKAGE_UTILS.replace(".","/");
-
+        PACKACE_ENUM=  PATH_BASE+"/"+PACKACE_BASE.replace(".","/")+"/"+PACKACE_ENUM.replace(".","/");
 
     }
 
     public static void main(String[] args) {
 
-        System.out.println(PATH_PO);
-
-        System.out.println(PACKAGE_UTILS);
-
-        System.out.println(PACKAGE_UTILS_PATH);
-
+        System.out.println(PACKACE_ENUM);
+        System.out.println(PACKACE_ENUM_PATH);
 
     }
 
